@@ -1,0 +1,15 @@
+= form_tag generator_path, :class => 'form-inline' do
+  .controls.controls-row
+    = text_field_tag :table, "", class: "input-medium", placeholder: "Table name"
+  .controls.controls-row.cloneable
+    = text_field_tag "columns[]", "", class: "input-medium", placeholder: "Column name"
+    = select_tag "types[]", grouped_options_for_select(Generator.types)
+    .clone
+      %a{href: "#", :class => "btn btn-small btn-primary"}
+        %i.icon-plus
+  .controls.controls-row
+    = select_tag "locale", options_for_select(Generator.locales)
+  .controls.controls-row
+    = text_field_tag :how_many, "", class: "input-small", placeholder: "How many"
+
+  %button{type: "submit", class: "btn"} Generate
